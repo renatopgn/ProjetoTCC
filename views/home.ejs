@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+
+  <%- include('partials/navbar.ejs') %>
+
+  <!-- Home Hero -->
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <h1>O melhor investimento da sua vida é em você mesmo.</h1>
+      <p>Transforme seu corpo e sua mente com a gente.</p>
+      <a href="/cadastro" class="btn">Quero começar</a>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="sobre-section animar">
+    <h2>Somos gente cuidando de gente</h2>
+    <p>Equipe qualificada, estrutura de ponta e foco no seu bem-estar físico e mental.</p>
+  </section>
+
+  <!-- Planos -->
+  <section id="planos" class="planos-section animar">
+    <h2>Conheça nossos planos!</h2>
+    <div class="plano-cards">
+      <div class="card">
+        <h3>Plano Mensal</h3>
+        <p>Ideal para começar sua jornada.</p>
+      </div>
+      <div class="card">
+        <h3>Plano Trimestral</h3>
+        <p>Economia e resultados consistentes.</p>
+      </div>
+      <div class="card">
+        <h3>Plano Anual</h3>
+        <p>Compromisso com sua evolução.</p>
+      </div>
+    </div>
+    <div class="botao-detalhes-container">
+      <a href="/planos" class="botao-detalhes">Ver todos os planos</a>
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section class="mapa-section animar">
+    <h2>Onde estamos</h2>
+    <div class="mapa-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d517.387220756146!2d-49.68092576662126!3d-29.2661039286003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952241cdff8b0761%3A0xd2534c42341545e9!2sSoldier%20Gym!5e0!3m2!1spt-BR!2sbr!4v1751488665120!5m2!1spt-BR!2sbr" width="1300" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer id="contato" class="animar">
+    <div class="contato-info">
+      <p>Email: contato@academiafitness.com</p>
+      <p>Telefone: (48) 99999-9999</p>
+      <p>Instagram: @academiafitness</p>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Academia Fitness. Todos os direitos reservados.</p>
+    </div>
+    <div class="endereco-academia">
+      <p>Rua Exemplo, 123 - Bairro Central</p>
+      <p>Cidade Exemplo - MG</p>
+    </div>
+  </footer>
+
+  <script src="/js/home.js"></script>
+</body>
+</html>

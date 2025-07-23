@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Perfil - Academia</title>
+  <link rel="stylesheet" href="/css/meuperfil.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <%- include('partials/navbar') %>
+
+  <!-- CONTEÚDO DA PÁGINA -->
+  <main class="perfil-container">
+    <!-- ESQUERDA -->
+    <section class="perfil-lado-esquerdo" id="usuario-info"> 
+      <h2>Seus Dados Pessoais</h2>
+
+      <div class="info-usuario campo-usuario">
+        <label>Nome</label>
+        <span>João Exemplo</span>
+        <input type="text" value="João Exemplo" placeholder="Seu nome completo" style="display: none;">
+      </div>
+
+      <div class="info-usuario campo-usuario">
+        <label>Email</label>
+        <span>joao@exemplo.com</span>
+        <input type="email" value="joao@exemplo.com" placeholder="Seu e-mail" style="display: none;">
+      </div>
+
+      <div class="info-usuario campo-usuario">
+        <label>Senha</label>
+        <span>********</span>
+        <div class="senha-wrapper" style="display: none; align-items: center;">
+          <input type="password" value="minhasenha123" placeholder="Sua senha" id="senha-campo" style="width: calc(100% - 40px);">
+          <button type="button" id="toggleSenha" style="width: 36px; margin-left: 4px; cursor: pointer;">👁️</button>
+        </div>
+      </div>
+
+      <div class="info-usuario campo-usuario">
+        <label>Data de Nascimento</label>
+        <span>1990-10-10</span>
+        <input type="date" value="1990-10-10" placeholder="Sua data de nascimento" style="display: none;">
+      </div>
+
+      <div class="info-usuario campo-usuario">
+        <label>CPF</label>
+        <span>00000000000</span>
+        <input type="text" value="00000000000" placeholder="Seu CPF" maxlength="14" style="display: none;">
+      </div>
+
+      <div class="info-usuario campo-usuario">
+        <label>Telefone</label>
+        <span>11912345678</span>
+        <input type="tel" value="11912345678" placeholder="Seu telefone" maxlength="15" style="display: none;">
+      </div>
+
+      <div class="botoes-usuario">
+        <button id="editar-dados">Editar</button>
+        <button id="salvar-dados" style="display: none;">Salvar</button>
+        <button id="cancelar-dados" style="display: none;">Cancelar</button>
+      </div>
+    </section>
+
+    <!-- DIREITA: FORMULÁRIO -->
+    <section class="formulario-perfil">
+      <h2>Ficha de Avaliação</h2>
+      <form id="form-avaliacao">
+        <div class="campo">
+          <label>Altura</label>
+          <input type="text" placeholder="Ex: 1,75 m" disabled>
+        </div>
+        <div class="campo">
+          <label>Peso</label>
+          <input type="text" placeholder="Ex: 68 kg" disabled>
+        </div>
+        <div class="campo">
+          <label>Medicação (se houver)</label>
+          <input type="text" placeholder="Digite se faz uso de medicamentos" disabled>
+        </div>
+        <div class="campo">
+          <label>Objetivo</label>
+          <input type="text" placeholder="Ex: Emagrecer, Ganhar massa, Condicionamento..." disabled>
+        </div>
+        <div class="campo">
+          <label>Exames (foto)</label>
+          <input type="file" disabled>
+        </div>
+        <div class="campo">
+          <label>Comorbidade</label>
+          <input type="text" placeholder="Ex: Diabetes, Hipertensão..." disabled>
+        </div>
+        <div class="campo">
+          <label>Motivo</label>
+          <textarea placeholder="Por que está buscando treinos personalizados?" disabled></textarea>
+        </div>
+
+        <div class="botoes-formulario">
+          <button type="button" id="editar">Editar</button>
+          <button type="submit" id="salvar">Salvar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="/js/meuperfil.js"></script>
+</body>
+</html>

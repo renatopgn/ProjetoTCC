@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciar Treinos</title>
+
+  <!-- Fonte Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS Local -->
+  <link rel="stylesheet" href="/css/treinos.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <%- include('partials/navbar') %>
+
+  <div style="height: 110px;"></div>
+
+  <header class="top-bar">
+    <h1>Treinos</h1>
+    <button class="add-btn" onclick="abrirModal()">Adicionar Treino +</button>
+  </header>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <h2>Novo Treino</h2>
+      <label>Nome:</label>
+      <input type="text" id="nome">
+      <label>Descrição:</label>
+      <textarea id="descricao"></textarea>
+      <label>Objetivo:</label>
+      <input type="text" id="objetivo">
+      <label>Divisão Muscular:</label>
+      <input type="text" id="divisao">
+      <div class="modal-buttons">
+        <button onclick="fecharModal()">Cancelar</button>
+        <button onclick="adicionarTreino()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de Treinos -->
+  <section class="treino-lista" id="listaTreinos"></section>
+
+  <!-- JS Local -->
+  <script src="/js/treinos.js"></script>
+</body>
+</html>

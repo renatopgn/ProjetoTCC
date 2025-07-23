@@ -1,0 +1,211 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Importando a fonte 'Poppins' da Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Corpo da página */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000; /* Fundo preto */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Barra de navegação */
+.navbar {
+  width: 100%;
+  box-sizing: border-box;  /* ADICIONE esta linha */
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo da navbar */
+.navbar .logo img {
+    height: 67px;
+    width: 100px;
+}
+
+/* Links da Navbar */
+.navbar .nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links a {
+    font-family: arial;
+    text-decoration: none;
+    color: rgb(170, 170, 170);
+    font-size: 18px;
+    padding: 10px 15px;
+    font-weight: 100;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* animação suave */
+    letter-spacing: 1px;
+}
+
+.navbar .nav-links a:hover {
+    border-radius: 5px;
+    color: #fff;           /* deixa o texto mais claro */
+    transform: scale(1.1); /* aumenta 10% o tamanho */
+}
+
+.navbar::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(255, 165, 0, 0.9) 50%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Estilos para os quadros */
+.quadros-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* Aumentando o espaço entre os quadros */
+    margin-top: 100px;
+}
+
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('fonte/RobotoCondensed-Italic-VariableFont_wght.ttf') format('truetype'); /* Substitua pelo caminho correto */
+    font-weight: normal;
+    font-style: normal;
+}
+
+.quadro {
+    background-color: rgba(19, 19, 19, 0.8); /* Fundo semi-translúcido */
+    color: rgb(177, 177, 177);
+    padding: 28px; /* Aumentando o padding para deixar o quadro maior */
+    width: 500px; /* Largura maior para os quadros */
+    height: 600px; /* Mantendo o quadro quadrado */
+    box-shadow: 0 8px 15px rgba(78, 58, 19, 0.8); /* Sombra laranja */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ajustando para alinhar os itens no topo */
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação ao passar o mouse */
+}
+
+.quadro h2 {
+    font-family: 'MinhaFonte', sans-serif; /* Aplicando a fonte personalizada */
+    font-size: 30px; /* Aumentando o tamanho do título */
+    font-weight: 600;
+    margin-top: 5px; /* Espaço entre o preço e o título */
+}
+
+.quadro .preco {
+    font-family: 'MinhaFonte', sans-serif; /* Aplicando a fonte personalizada */
+    font-size: 40px; /* Aumentando o tamanho do valor */
+    color: #a1a1a1; /* Cor laranja para destacar o valor */
+    font-weight: bold;
+    margin-top: 20px; /* Distância entre o valor e o título */
+}
+
+.quadro p {
+    font-size: 22px; /* Aumentando a descrição */
+    margin-bottom: 30px;
+}
+
+/* Estilo para a lista de benefícios */
+.beneficios {
+    list-style-type: none; /* Remove o marcador padrão da lista */
+    padding: 0;
+    margin-top: 43px;
+    text-align: left;
+    width: 100%; /* Garante que a lista ocupe a largura do quadro */
+}
+
+.beneficios li {
+    font-size: 17px;
+    margin-bottom: 16px;
+    position: relative; /* Para colocar o círculo antes de cada item */
+    padding-left: 30px; /* Espaço para o círculo */
+}
+
+.beneficios li::before {
+    content: ''; /* Criação do círculo */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Alinha o círculo ao meio do item */
+    width: 5px;
+    height: 5px;
+    border-radius: 50%; /* Faz o círculo */
+    background-color: #FFA500; /* Cor laranja */
+}
+
+/* Efeito de hover nos quadros */
+.quadro:hover {
+    transform: translateY(-14px); /* Efeito de levantar o quadro */
+    box-shadow: 0 16px 30px rgba(255, 190, 70, 0.5); /* Aumento da sombra para dar mais profundidade */
+}
+
+.quadro button {
+    background-color: #FFA500; /* Fundo laranja */
+    color: rgb(0, 0, 0); /* Texto branco */
+    font-size: 18px;
+    border: none; /* Removendo bordas */
+    padding: 10px ;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Animação do botão */
+    font-weight: 600;
+    width: 450px;
+    margin-top: 20px; /* Distância entre o texto e o botão */
+}
+
+.quadro button:hover {
+    background-color: #a16100; /* Fundo laranja mais escuro no hover */
+    transform: scale(1.0); /* Efeito de aumento no botão */
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .navbar .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .nav-links li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .quadros-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .quadro {
+        width: 90%; /* Aumentando a largura no mobile */
+        height: 400px; /* Mantendo o formato quadrado */
+    }
+
+    .quadro p {
+        font-size: 18px;
+    }
+}

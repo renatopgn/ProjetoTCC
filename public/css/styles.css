@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Importando a fonte 'Poppins' da Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Corpo da página */
+body {
+    font-family: 'Poppins', sans-serif; /* Fonte mais estilosa e legível */
+    background: url('imagens/academiafundo.png') no-repeat center center fixed; /* A imagem de fundo */
+    background-size: cover; /* Garantir que a imagem cubra toda a tela */
+    height: 100vh; /* Garantir que ocupe toda a altura da tela */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start; /* Alinhamento à esquerda */
+    align-items: center;
+    padding-left: 50px; /* Espaço à esquerda para o conteúdo */
+}
+
+/* Barra de navegação */
+.navbar {
+  width: 100%;
+  box-sizing: border-box;  /* ADICIONE esta linha */
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo da navbar */
+.navbar .logo img {
+    height: 67px;
+    width: 100px;
+}
+
+/* Links da Navbar */
+.navbar .nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links a {
+    font-family: arial;
+    text-decoration: none;
+    color: rgb(170, 170, 170);
+    font-size: 18px;
+    padding: 10px 15px;
+    font-weight: 100;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* animação suave */
+    letter-spacing: 1px;
+}
+
+.navbar .nav-links a:hover {
+    border-radius: 5px;
+    color: #fff;           /* deixa o texto mais claro */
+    transform: scale(1.1); /* aumenta 10% o tamanho */
+}
+
+.navbar::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(255, 165, 0, 0.9) 50%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Estilos para o container do formulário */
+.form-container {
+    width: 100%;
+    max-width: 450px; /* Limita a largura do formulário */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 60px; /* Formulário mais para cima */
+    margin-left: 30px; /* Formulário um pouco mais à direita */
+    background-color: transparent; /* Remover fundo */
+    animation: slideIn 0.5s ease-in-out; /* Animação do formulário */
+}
+
+/* Animação do formulário */
+@keyframes slideIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Título - "Cadastro de Aluno" */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgba(255, 165, 0, 0.9); /* Laranja mais opaco */
+    font-size: 28px;
+    font-weight: 600; /* Mesmo peso da fonte do botão */
+    font-family: 'Poppins', sans-serif; /* Usando a mesma fonte que o botão */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo dos labels */
+label {
+    font-size: 16px;
+    color: #979797; /* Cor mais escura para contraste */
+    margin-bottom: 5px;
+    font-weight: 500; /* Peso de fonte mais grosso nos labels */
+}
+
+/* Estilo dos campos de input */
+input, select, button {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out; /* Animação para interação */
+    font-weight: 400; /* Peso padrão nos inputs */
+}
+
+input[type="password"],
+input[type="text"],
+input[type="tel"],
+input[type="date"], /* Estilo para o campo de data */
+select {
+    font-size: 16px;
+    width: 100%;
+    background-color: transparent; /* Remover fundo */
+    color: #888888; /* Cor da fonte do campo de texto, data */
+    border-bottom: 2px solid rgba(255, 165, 0, 0.7); /* Linha laranja opaca embaixo */
+}
+
+/* Cor do texto e placeholder */
+input::placeholder,
+select::placeholder {
+    color: rgba(153, 153, 153, 0.8); /* Cor laranja opaca para o placeholder */
+}
+
+/* Cor do texto dentro dos campos de input */
+input,
+select {
+    color: #969696; /* Cor mais escura para os campos de input. genero */
+}
+
+/* Animação do cursor no campo de input */
+input:hover, select:hover {
+    cursor: pointer; /* Adiciona cursor de mão */
+    transform: scale(1.05); /* Efeito de zoom suave */
+}
+
+input:focus, select:focus, button:focus {
+    outline: none;
+    border-bottom-color: rgba(255, 69, 0, 0.9); /* Linha laranja mais forte ao focar */
+}
+
+button {
+    background-color: rgba(255, 165, 0, 0.9); /* Laranja mais suave */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    font-weight: 600; /* Fonte mais gordinha no botão */
+}
+
+button:hover {
+    background-color: rgba(255, 69, 0, 1); /* Efeito hover com laranja mais forte */
+}
+
+button:active {
+    background-color: #e03e00; /* Cor quando o botão for clicado */
+}
+
+/* Estilo do texto abaixo do formulário */
+.login-text {
+    text-align: center;
+    font-size: 16px;
+    color: #979797;
+    margin-top: 20px;
+}
+
+.login-highlight {
+    color: #FFA500; /* Cor laranja para o texto de login */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .navbar .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .nav-links li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    flex: 1;
+}
+
+/* Botão para mostrar/ocultar senha */
+.password-wrapper button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgba(153, 153, 153, 0.8);
+    transition: color 0.3s ease;
+}
+
+.password-wrapper button:hover {
+    color: rgba(255, 69, 0, 0.9); /* Cor laranja ao passar o mouse */
+}

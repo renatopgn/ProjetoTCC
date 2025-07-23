@@ -1,0 +1,14 @@
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/planos">Planos</a></li>
+    <li><a href="/perfil">Meu Perfil</a></li>
+    <li><a href="/treinos">Treinos</a></li>
+    <% if (!userId) { %>
+      <li><a href="/auth/login">Login</a></li>
+      <li><a href="/auth/cadastro">Cadastre-se</a></li>
+    <% } else { %>
+      <li><a href="/auth/logout">Sair</a></li>
+    <% } %>
+  </ul>
+</nav>

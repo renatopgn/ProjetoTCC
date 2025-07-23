@@ -1,0 +1,281 @@
+html {
+    margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;  /* importante */
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Reutiliza sua navbar */
+.navbar {
+  width: 100%;
+  box-sizing: border-box;  /* ADICIONE esta linha */
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo da navbar */
+.navbar .logo img {
+    height: 67px;
+    width: 100px;
+}
+
+/* Links da Navbar */
+.navbar .nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links a {
+    font-family: arial;
+    text-decoration: none;
+    color: rgb(170, 170, 170);
+    font-size: 18px;
+    padding: 10px 15px;
+    font-weight: 100;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* animação suave */
+    letter-spacing: 1px;
+}
+
+.navbar .nav-links a:hover {
+    border-radius: 5px;
+    color: #fff;           /* deixa o texto mais claro */
+    transform: scale(1.1); /* aumenta 10% o tamanho */
+}
+
+.navbar::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(255, 165, 0, 0.9) 50%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Container principal */
+.perfil-container {
+  margin-top: 120px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 30px 5%;
+  flex-wrap: wrap;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Lado esquerdo */
+.perfil-lado-esquerdo {
+  background-color: #1a1a1a;
+  border-left: 4px solid orange;
+  padding: 30px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+}
+.perfil-lado-esquerdo h2 {
+  margin-bottom: 20px;
+  color: orange;
+}
+.perfil-lado-esquerdo p {
+  margin-bottom: 12px;
+  color: #ccc;
+}
+.acoes-nao-logado {
+  margin-top: 20px;
+}
+.acoes-nao-logado .botao-acao {
+  background-color: orange;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* Formulário */
+.formulario-perfil {
+  flex: 2;
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
+  min-width: 300px;
+}
+
+.formulario-perfil h2 {
+  color: orange;
+  margin-bottom: 20px;
+}
+
+.campo {
+  margin-bottom: 20px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2b2b2b;
+  color: white;
+  transition: 0.3s;
+}
+.campo input:disabled,
+.campo textarea:disabled {
+  opacity: 0.6;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.botoes-formulario {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+.botoes-formulario button {
+  background-color: orange;
+  border: none;
+  padding: 12px 25px;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+.botoes-formulario button:hover {
+  background-color: #ff9900;
+}
+
+.perfil-lado-esquerdo {
+  position: relative; /* necessário para o posicionamento absoluto do botão funcionar */
+}
+
+.botoes-usuario {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.botoes-usuario button {
+  background-color: orange;
+  border: none;
+  padding: 12px 25px;
+  color: black;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.botoes-usuario button:hover {
+  background-color: #ff9900;
+}
+
+/* Estilo dos campos de informações do usuário */
+.info-usuario {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease;
+}
+
+.info-usuario label {
+  color: #ff9900;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.info-usuario span {
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.info-usuario input {
+  display: none;
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 4px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.info-usuario input:focus {
+  border: 1px solid orange;
+}
+
+/* Modo edição: quando input é visível */
+.info-usuario.editando {
+  background-color: #333;
+}
+
+/* Botões editar/salvar já foram estilizados no passo anterior */
+
+.senha-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.senha-wrapper input {
+  flex-grow: 1;
+}
+
+.senha-wrapper button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+}
