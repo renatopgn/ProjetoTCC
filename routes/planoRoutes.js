@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const planosController = require('../controllers/planosController');
+const planoController = require('../controllers/planoController');
 
-router.get('/', planosController.renderPlanos);
+router.get('/', planoController.getPlanos);
 
 module.exports = router;

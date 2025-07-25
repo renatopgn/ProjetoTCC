@@ -1,26 +1,61 @@
 const Treino = require('../models/Treino');
 
-exports.renderTreinos = async (req, res) => {
+exports.getTreinos = async (req, res) => {
   const userId = req.session.userId;
-  const treinos = await Treino.findByUser(userId);
-  res.render('treinos', { treinos });
+  if (!userId) return res.redirect('/auth/login');
+
+  try {
+    const lista = await Treino.findAll({ where: { userId } });
+    res.render('treinos', { lista });
+  } catch (err) {
+    console.error('Erro ao carregar treinos:', err);
+    res.status(500).send('Erro ao carregar treinos');
+  }
 };
 
-exports.addTreino = async (req, res) => {
+exports.createTreino = async (req, res) => {
+  const userId = req.session.userId;
   const { nome, descricao, objetivo, divisao } = req.body;
-  await Treino.create({ user_id: req.session.userId, nome, descricao, objetivo, divisao });
-  res.redirect('/treinos');
+
+  try {
+    await Treino.create({ nome, descricao, objetivo, divisao, userId });
+    res.redirect('/treinos');
+  } catch (err) {
+    console.error('Erro ao criar treino:', err);
+    res.status(500).send('Erro ao criar treino');
+  }
 };
 
 exports.deleteTreino = async (req, res) => {
   const treinoId = req.params.id;
-  await Treino.delete(treinoId, req.session.userId);
-  res.redirect('/treinos');
+
+  try {
+    await Treino.destroy({ where: { id: treinoId } });
+    res.redirect('/treinos');
+  } catch (err) {
+    console.error('Erro ao deletar treino:', err);
+    res.status(500).send('Erro ao deletar treino');
+  }
 };
 
 exports.editTreino = async (req, res) => {
-  const treinoId = req.params.id;
+  const userId = req.session.userId;
+  const { id } = req.params;
   const { nome, descricao, objetivo, divisao } = req.body;
-  await Treino.update(treinoId, { nome, descricao, objetivo, divisao });
-  res.redirect('/treinos');
+
+  try {
+    const treino = await Treino.findOne({ where: { id, userId } });
+
+    if (!treino) {
+      return res.status(404).send('Treino não encontrado');
+    }
+
+    await treino.update({ nome, descricao, objetivo, divisao });
+
+    res.redirect('/treinos');
+  } catch (err) {
+    console.error('Erro ao editar treino:', err);
+    res.status(500).send('Erro ao editar treino');
+  }
 };
+
