@@ -16,7 +16,10 @@ const Treino = db.define('Treino', {
   divisao: {
     type: DataTypes.STRING
   }
+}, {
+  timestamps: true // Isso ativa o createdAt e updatedAt automaticamente
 });
+
 
 // Relação: um usuário pode ter vários treinos
 Treino.belongsTo(User, { foreignKey: 'userId' });

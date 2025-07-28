@@ -6,20 +6,27 @@ const User = db.define('User', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  email: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
+  data_nasc: {
+    type: DataTypes.DATEONLY
   },
-  senha: {
+  cpf: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+    senha: {
     type: DataTypes.STRING,
     allowNull: false
-  },
-  idade: {
-    type: DataTypes.INTEGER
   },
   genero: {
     type: DataTypes.STRING
+  },
+  contato: {
+    type: DataTypes.STRING
+  },
+  tipo: {
+    type: DataTypes.ENUM('aluno', 'professor'),
+    defaultValue: 'aluno'
   },
   altura: {
     type: DataTypes.FLOAT
@@ -27,12 +34,24 @@ const User = db.define('User', {
   peso: {
     type: DataTypes.FLOAT
   },
+  medicacao: {
+    type: DataTypes.TEXT
+  },
   objetivo: {
     type: DataTypes.STRING
   },
-  nivel: {
-    type: DataTypes.STRING
-  }
+  exame: {
+    type: DataTypes.STRING // nome do arquivo
+  },
+  comorbidade: {
+    type: DataTypes.TEXT
+  },
+  motivo: {
+    type: DataTypes.TEXT
+  },
+}, {
+  timestamps: true,
+  tableName: 'usuario' // nome exato da tabela no banco
 });
 
 module.exports = User;

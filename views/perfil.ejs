@@ -66,34 +66,34 @@
     <!-- DIREITA: FORMULÁRIO -->
     <section class="formulario-perfil">
       <h2>Ficha de Avaliação</h2>
-      <form id="form-avaliacao">
+      <form id="form-avaliacao" method="POST" action="/perfil/update" enctype="multipart/form-data">
         <div class="campo">
           <label>Altura</label>
-          <input type="text" placeholder="Ex: 1,75 m" disabled>
+          <input type="text" placeholder="Ex: 1,75 m" disabled name="altura">
         </div>
         <div class="campo">
           <label>Peso</label>
-          <input type="text" placeholder="Ex: 68 kg" disabled>
+          <input type="text" placeholder="Ex: 68 kg" disabled name="peso">
         </div>
         <div class="campo">
           <label>Medicação (se houver)</label>
-          <input type="text" placeholder="Digite se faz uso de medicamentos" disabled>
+          <input type="text" placeholder="Digite se faz uso de medicamentos" disabled name="medicacao">
         </div>
         <div class="campo">
           <label>Objetivo</label>
-          <input type="text" placeholder="Ex: Emagrecer, Ganhar massa, Condicionamento..." disabled>
+          <input type="text" placeholder="Ex: Emagrecer, Ganhar massa, Condicionamento..." disabled name="objetivo">
         </div>
         <div class="campo">
           <label>Exames (foto)</label>
-          <input type="file" disabled>
+          <input type="file" disabled name="exameFoto">
         </div>
         <div class="campo">
           <label>Comorbidade</label>
-          <input type="text" placeholder="Ex: Diabetes, Hipertensão..." disabled>
+          <input type="text" placeholder="Ex: Diabetes, Hipertensão..." disabled name="comorbidade">
         </div>
         <div class="campo">
           <label>Motivo</label>
-          <textarea placeholder="Por que está buscando treinos personalizados?" disabled></textarea>
+          <textarea placeholder="Por que está buscando treinos personalizados?" disabled name="motivo"></textarea>
         </div>
 
         <div class="botoes-formulario">
