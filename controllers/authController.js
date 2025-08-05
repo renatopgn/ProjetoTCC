@@ -10,15 +10,22 @@ exports.getCadastro = (req, res) => {
 };
 
 exports.postCadastro = async (req, res) => {
-  const { nome, email, senha } = req.body;
+  const {  nome, data_nasc, cpf, senha, genero, contato  } = req.body;
 
   try {
     const hashedSenha = await bcrypt.hash(senha, 10);
-    await User.create({ nome, email, senha: hashedSenha });
+    console.log('Dados recebidos:', req.body);
+    await User.create({  
+      nome,
+      data_nasc,
+      cpf,
+      senha: hashedSenha,
+      genero,
+      contato });
     res.redirect('/auth/login');
   } catch (error) {
-    console.error('Erro no cadastro:', error);
-    res.status(500).send('Erro ao cadastrar usuário');
+    console.error('Erro no cadastro:', error.message);
+res.status(500).send(`Erro ao cadastrar usuário: ${error.message}`);
   }
 };
 

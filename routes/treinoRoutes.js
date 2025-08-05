@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const treinosController = require('../controllers/treinosController');
+const treinosController = require('../controllers/treinoController');
 
 // Página de treinos (listar todos do usuário)
 router.get('/', treinosController.renderTreinos);

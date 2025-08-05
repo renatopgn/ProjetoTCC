@@ -12,7 +12,7 @@ const User = db.define('User', {
   cpf: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true
+    unique: false
   },
     senha: {
     type: DataTypes.STRING,
