@@ -15,14 +15,18 @@ const Treino = db.define('Treino', {
   },
   divisao: {
     type: DataTypes.STRING
+  },
+  userId: {                    // <-- ADICIONE ISSO!
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 }, {
-  timestamps: true // Isso ativa o createdAt e updatedAt automaticamente
+  timestamps: true
 });
 
-
-// Relação: um usuário pode ter vários treinos
+// Relação
 Treino.belongsTo(User, { foreignKey: 'userId' });
 User.hasMany(Treino, { foreignKey: 'userId' });
 
 module.exports = Treino;
+

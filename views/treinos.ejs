@@ -7,8 +7,6 @@
 
   <!-- Fonte Google -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- CSS Local -->
   <link rel="stylesheet" href="/css/treinos.css">
 </head>
 <body>
@@ -23,29 +21,69 @@
     <button class="add-btn" onclick="abrirModal()">Adicionar Treino +</button>
   </header>
 
-  <!-- Modal -->
+  <!-- Modal com FORM -->
   <div class="modal-overlay" id="modal">
     <div class="modal">
       <h2>Novo Treino</h2>
-      <label>Nome:</label>
-      <input type="text" id="nome">
-      <label>Descrição:</label>
-      <textarea id="descricao"></textarea>
-      <label>Objetivo:</label>
-      <input type="text" id="objetivo">
-      <label>Divisão Muscular:</label>
-      <input type="text" id="divisao">
-      <div class="modal-buttons">
-        <button onclick="fecharModal()">Cancelar</button>
-        <button onclick="adicionarTreino()">Salvar</button>
-      </div>
+      <form id="formTreino" action="/treinos/add" method="POST">
+        <!-- CAMPO OCULTO PARA EDITAR -->
+        <input type="hidden" id="treinoId" name="id">
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea>
+
+        <label for="objetivo">Objetivo:</label>
+        <input type="text" id="objetivo" name="objetivo" required>
+
+        <label for="divisao">Divisão Muscular:</label>
+        <input type="text" id="divisao" name="divisao" required>
+
+        <div class="modal-buttons">
+          <button type="button" onclick="fecharModal()">Cancelar</button>
+          <button type="submit">Salvar</button>
+        </div>
+      </form>
     </div>
   </div>
 
   <!-- Lista de Treinos -->
-  <section class="treino-lista" id="listaTreinos"></section>
+  <section class="treino-lista" id="listaTreinos">
+    <% if (lista && lista.length > 0) { %>
+      <% lista.forEach(treino => { %>
+        <div class="treino-card"
+             data-id="<%= treino.id %>"
+             data-nome="<%= treino.nome %>"
+             data-descricao="<%= treino.descricao %>"
+             data-objetivo="<%= treino.objetivo %>"
+             data-divisao="<%= treino.divisao %>">
 
-  <!-- JS Local -->
+          <div class="menu-container">
+            <button class="favorito-btn" onclick="toggleFavorito(this)">♥</button>
+            <button class="menu-btn" onclick="toggleMenu(this)">⋮</button>
+            <div class="menu-dropdown">
+              <button type="button" onclick="editarTreino(this)">Editar</button>
+              <form action="/treinos/delete/<%= treino.id %>" method="POST" style="margin: 0;">
+                <button type="submit">Excluir</button>
+              </form>
+            </div>
+          </div>
+
+          <h3><%= treino.nome %></h3>
+          <p><strong>Objetivo:</strong> <%= treino.objetivo %></p>
+          <p><strong>Divisão:</strong> <%= treino.divisao %></p>
+          <p class="descricao-curta"><%= treino.descricao %></p>
+
+          <button class="view-btn" onclick="verDetalhes('<%= treino.nome %>', '<%= treino.descricao.replace(/\n/g,) %>', '<%= treino.objetivo %>', '<%= treino.divisao %>')">Ver</button>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p id="nenhumcadastro" style="text-align: center;">Nenhum treino cadastrado ainda.</p>
+    <% } %>
+  </section>
+
   <script src="/js/treinos.js"></script>
 </body>
 </html>

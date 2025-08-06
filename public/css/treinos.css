@@ -12,64 +12,6 @@ body {
   padding: 0 20px;
 }
 
-/* Navbar */
-.navbar {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 15px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.navbar .logo img {
-  height: 67px;
-  width: 100px;
-}
-
-.navbar .nav-links {
-  list-style-type: none;
-  display: flex;
-}
-
-.navbar .nav-links li {
-  margin-left: 20px;
-}
-
-.navbar .nav-links a {
-    font-family: arial;
-    text-decoration: none;
-    color: rgb(170, 170, 170);
-    font-size: 18px;
-    padding: 10px 15px;
-    font-weight: 100;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* animação suave */
-    letter-spacing: 1px;
-}
-
-.navbar .nav-links a:hover {
-    border-radius: 5px;
-    color: #fff;           /* deixa o texto mais claro */
-    transform: scale(1.1); /* aumenta 10% o tamanho */
-}
-
-.navbar::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(255, 165, 0, 0.9) 50%, rgba(0, 0, 0, 0) 100%);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 /* Título e botão */
 .top-bar {
   position: relative;
@@ -119,6 +61,17 @@ body {
   z-index: 999;
 }
 
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal label {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
 .modal {
   background-color: #111;
   padding: 25px;
@@ -142,12 +95,13 @@ body {
 
 .modal input,
 .modal textarea {
-  padding: 8px;
+  width: 100%;
+  padding: 10px;
   border: 1px solid #555;
   background: #222;
   color: white;
   border-radius: 5px;
-  resize: vertical;
+  font-family: 'Poppins', sans-serif;
 }
 
 .modal-buttons {
@@ -183,42 +137,46 @@ body {
   justify-content: center;
 }
 
-.card-treino {
+.treino-card {
   background: #1a1a1a;
   border-left: 4px solid orange;
-  padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,165,0,0.1);
   width: 100%;
   max-width: 300px;
   height: 300px;
-  box-shadow: 0 0 10px rgba(255,165,0,0.1);
-  position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
 }
 
-.card-treino h3 {
+.treino-card h3 {
   color: orange;
-  margin-bottom: 8px;
+  margin: 0 0 5px;
+  font-size: 20px;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
-.card-treino .descricao-curta {
+.descricao-curta {
   font-size: 0.95rem;
   color: #ccc;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
   overflow: hidden;
   text-overflow: ellipsis;
-  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;        /* mostra até 4 linhas */
+  -webkit-box-orient: vertical;
   line-height: 1.4em;
-  max-height: calc(1.4em * 5);
+  max-height: calc(1.4em * 4);
+  margin-top: 4px;
+  word-break: break-word;
+  flex-grow: 1;
 }
 
-.card-treino button.view-btn {
+.treino-card .view-btn {
   align-self: flex-end;
   padding: 6px 12px;
   font-size: 14px;
@@ -231,8 +189,21 @@ body {
   transition: background 0.3s;
 }
 
-.card-treino button.view-btn:hover {
+.treino-card .view-btn:hover {
   background-color: #ff8c00;
+}
+
+
+
+.treino-card p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  line-height: 1.2em;
+}
+
+.treino-card form {
+  margin-top: auto;
 }
 
 /* Menu de três pontinhos */
@@ -283,6 +254,7 @@ body {
   background-color: #333;
 }
 
+/* Botão de favorito */
 .favorito-btn {
   background: none;
   border: none;
@@ -298,15 +270,9 @@ body {
 }
 
 @keyframes explode {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.4);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
 }
 
 .favorito-btn.animate {

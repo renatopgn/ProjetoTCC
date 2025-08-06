@@ -30,10 +30,10 @@ res.status(500).send(`Erro ao cadastrar usuário: ${error.message}`);
 };
 
 exports.postLogin = async (req, res) => {
-  const { email, senha } = req.body;
+  const { cpf, senha } = req.body;
 
   try {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { cpf } });
     if (!user) return res.redirect('/auth/login');
 
     const match = await bcrypt.compare(senha, user.senha);
