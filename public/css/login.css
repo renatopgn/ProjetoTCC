@@ -60,6 +60,15 @@ h1 {
     font-family: 'Poppins', sans-serif; /* Usando a mesma fonte que o botão */
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 3500px #0c0c0c inset !important;
+  -webkit-text-fill-color: #fff !important;
+  caret-color: #fff;
+}
+
 form {
     display: flex;
     flex-direction: column;

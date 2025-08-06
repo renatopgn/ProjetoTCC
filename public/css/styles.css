@@ -105,7 +105,7 @@ select::placeholder {
 /* Cor do texto dentro dos campos de input */
 input,
 select {
-    color: #969696; /* Cor mais escura para os campos de input. genero */
+    color: #666666; /* Cor mais escura para os campos de input. genero */
 }
 
 /* Animação do cursor no campo de input */
@@ -117,6 +117,33 @@ input:hover, select:hover {
 input:focus, select:focus, button:focus {
     outline: none;
     border-bottom-color: rgba(255, 69, 0, 0.9); /* Linha laranja mais forte ao focar */
+}
+
+input,
+textarea,
+select {
+  background-color: #1e1e1e; /* cor escura consistente */
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 3500px #0c0c0c inset !important;
+  -webkit-text-fill-color: #fff !important;
+  caret-color: #fff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #ffae00;
+  background-color: #1e1e1e;
+  color: #fff;
 }
 
 button {
