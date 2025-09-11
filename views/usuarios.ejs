@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Usuários</title>
+  <link rel="stylesheet" href="/css/usuarios.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Gerenciamento de Usuários</h1>
+
+    <!-- Barra de pesquisa -->
+    <form class="search-box" method="get" action="/usuarios">
+      <input type="text" name="q" placeholder="Pesquisar usuário pelo nome..." value="<%= typeof query !== 'undefined' ? query : '' %>">
+      <button type="submit">Pesquisar</button>
+    </form>
+
+    <!-- Tabela de usuários -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Professor</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (usuarios && usuarios.length > 0) { %>
+            <% usuarios.forEach(usuario => { %>
+              <tr>
+                <td><%= usuario.nome %></td>
+                <td>
+                  <form method="post" action="/usuarios/tipo/<%= usuario.id %>" style="display:inline;">
+                    <label class="switch">
+                      <input type="checkbox" name="tipo" value="professor" onchange="this.form.submit()" <%= usuario.tipo === 'professor' ? 'checked' : '' %>>
+                      <span class="slider"></span>
+                    </label>
+                  </form>
+                </td>
+                <td>
+                  <form method="post" action="/usuarios/delete/<%= usuario.id %>" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                    <button type="submit" class="btn btn-delete">Excluir</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="3" style="text-align:center; padding:20px;">Nenhum usuário encontrado.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

@@ -26,28 +26,36 @@ const User = db.define('User', {
   },
   tipo: {
     type: DataTypes.ENUM('aluno', 'professor'),
-    defaultValue: 'aluno'
+    allowNull: false,
+    defaultValue: 'aluno' 
   },
   altura: {
-    type: DataTypes.FLOAT
+    type: DataTypes.FLOAT,
+    
   },
   peso: {
-    type: DataTypes.FLOAT
+    type: DataTypes.FLOAT,
+    
   },
   medicacao: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    
   },
   objetivo: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    
   },
   exame: {
-    type: DataTypes.STRING // nome do arquivo
+    type: DataTypes.STRING,
+    // nome do arquivo
   },
   comorbidade: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+   
   },
   motivo: {
-    type: DataTypes.TEXT
+    type: DataTypes.TEXT,
+    
   },
 }, {
   timestamps: true,

@@ -9,6 +9,8 @@
 </head>
 <body>
 
+  
+
   <%- include('partials/navbar') %>
 
   <!-- CONTEÚDO DA PÁGINA -->
@@ -19,42 +21,36 @@
 
       <div class="info-usuario campo-usuario">
         <label>Nome</label>
-        <span>João Exemplo</span>
-        <input type="text" value="João Exemplo" placeholder="Seu nome completo" style="display: none;">
-      </div>
-
-      <div class="info-usuario campo-usuario">
-        <label>Email</label>
-        <span>joao@exemplo.com</span>
-        <input type="email" value="joao@exemplo.com" placeholder="Seu e-mail" style="display: none;">
+        <span><%= user.nome %></span>
+        <input type="text" value="<%= user.nome %>" name="nome" style="display: none;">
       </div>
 
       <div class="info-usuario campo-usuario">
         <label>Senha</label>
         <span>********</span>
         <div class="senha-wrapper" style="display: none; align-items: center;">
-          <input type="password" value="minhasenha123" placeholder="Sua senha" id="senha-campo" style="width: calc(100% - 40px);">
+          <input type="password" name="senha" id="senha-campo" placeholder="Nova senha (deixe em branco para manter atual)" style="width: calc(100% - 40px);">
           <button type="button" id="toggleSenha" style="width: 36px; margin-left: 4px; cursor: pointer;">👁️</button>
         </div>
       </div>
 
       <div class="info-usuario campo-usuario">
         <label>Data de Nascimento</label>
-        <span>1990-10-10</span>
-        <input type="date" value="1990-10-10" placeholder="Sua data de nascimento" style="display: none;">
+        <span><%= user.data_nasc %></span>
+        <input type="date" value="<%= user.data_nasc %>" name="data_nasc" style="display: none;">
       </div>
 
-      <div class="info-usuario campo-usuario">
-        <label>CPF</label>
-        <span>00000000000</span>
-        <input type="text" value="00000000000" placeholder="Seu CPF" maxlength="14" style="display: none;">
-      </div>
+     <div class="info-usuario campo-usuario">
+  <label>CPF</label>
+  <span><%= user.cpf || '' %></span>
+  <input type="text" value="<%= user.cpf || '' %>" name="cpf" id="cpf-input" maxlength="14" style="display: none;">
+</div>
 
       <div class="info-usuario campo-usuario">
-        <label>Telefone</label>
-        <span>11912345678</span>
-        <input type="tel" value="11912345678" placeholder="Seu telefone" maxlength="15" style="display: none;">
-      </div>
+  <label>Telefone</label>
+  <span><%= user.contato || '' %></span>
+  <input type="tel" value="<%= user.contato || '' %>" name="contato" maxlength="15" style="display: none;">
+</div>
 
       <div class="botoes-usuario">
         <button id="editar-dados">Editar</button>
@@ -69,31 +65,34 @@
       <form id="form-avaliacao" method="POST" action="/perfil/update" enctype="multipart/form-data">
         <div class="campo">
           <label>Altura</label>
-          <input type="text" placeholder="Ex: 1,75 m" disabled name="altura">
+          <input type="text" name="altura" value="<%= user.altura || '' %>" placeholder="Ex: 1,75 m" disabled>
         </div>
         <div class="campo">
           <label>Peso</label>
-          <input type="text" placeholder="Ex: 68 kg" disabled name="peso">
+          <input type="text" name="peso" value="<%= user.peso || '' %>" placeholder="Ex: 68 kg" disabled>
         </div>
         <div class="campo">
           <label>Medicação (se houver)</label>
-          <input type="text" placeholder="Digite se faz uso de medicamentos" disabled name="medicacao">
+          <input type="text" name="medicacao" value="<%= user.medicacao || '' %>" placeholder="Digite se faz uso de medicamentos" disabled>
         </div>
         <div class="campo">
           <label>Objetivo</label>
-          <input type="text" placeholder="Ex: Emagrecer, Ganhar massa, Condicionamento..." disabled name="objetivo">
+          <input type="text" name="objetivo" value="<%= user.objetivo || '' %>" placeholder="Ex: Emagrecer..." disabled>
         </div>
         <div class="campo">
           <label>Exames (foto)</label>
-          <input type="file" disabled name="exameFoto">
+          <% if (user.exame) { %>
+            <p><a href="<%= user.exame %>" target="_blank">Ver exame atual</a></p>
+          <% } %>
+          <input type="file" name="exameFoto" disabled>
         </div>
         <div class="campo">
           <label>Comorbidade</label>
-          <input type="text" placeholder="Ex: Diabetes, Hipertensão..." disabled name="comorbidade">
+          <input type="text" name="comorbidade" value="<%= user.comorbidade || '' %>" placeholder="Ex: Diabetes..." disabled>
         </div>
         <div class="campo">
           <label>Motivo</label>
-          <textarea placeholder="Por que está buscando treinos personalizados?" disabled name="motivo"></textarea>
+          <textarea name="motivo" placeholder="Por que está buscando treinos personalizados?" disabled><%= user.motivo || '' %></textarea>
         </div>
 
         <div class="botoes-formulario">
