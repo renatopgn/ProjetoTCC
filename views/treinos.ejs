@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gerenciar Treinos</title>
 
-  <!-- Fonte Google -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/treinos.css">
 </head>
 <body>
 
-  <!-- Navbar -->
   <%- include('partials/navbar') %>
 
   <div style="height: 110px;"></div>
@@ -21,12 +19,11 @@
     <button class="add-btn" onclick="abrirModal()">Adicionar Treino +</button>
   </header>
 
-  <!-- Modal com FORM -->
+  <!-- Modal -->
   <div class="modal-overlay" id="modal">
     <div class="modal">
       <h2>Novo Treino</h2>
       <form id="formTreino" action="/treinos/add" method="POST">
-        <!-- CAMPO OCULTO PARA EDITAR -->
         <input type="hidden" id="treinoId" name="id">
 
         <label for="nome">Nome:</label>
@@ -41,6 +38,15 @@
         <label for="divisao">Divisão Muscular:</label>
         <input type="text" id="divisao" name="divisao" required>
 
+        <% if (user.tipo === 'professor') { %>
+          <label for="alunoId">Aluno:</label>
+          <select id="alunoId" name="alunoId" required>
+            <% usuarios.forEach(u => { %>
+              <option value="<%= u.id %>"><%= u.nome %> - <%= u.cpf %></option>
+            <% }) %>
+          </select>
+        <% } %>
+
         <div class="modal-buttons">
           <button type="button" onclick="fecharModal()">Cancelar</button>
           <button type="submit">Salvar</button>
@@ -49,7 +55,7 @@
     </div>
   </div>
 
-  <!-- Lista de Treinos -->
+  <!-- Lista -->
   <section class="treino-lista" id="listaTreinos">
     <% if (lista && lista.length > 0) { %>
       <% lista.forEach(treino => { %>
@@ -76,13 +82,31 @@
           <p><strong>Divisão:</strong> <%= treino.divisao %></p>
           <p class="descricao-curta"><%= treino.descricao %></p>
 
-          <button class="view-btn" onclick="verDetalhes('<%= treino.nome %>', '<%= treino.descricao.replace(/\n/g,) %>', '<%= treino.objetivo %>', '<%= treino.divisao %>')">Ver</button>
+          <% if (user.tipo === 'professor') { %>
+            <p class="nome-aluno"><strong>Aluno:</strong> <%= treino.User ? treino.User.nome : "N/A" %></p>
+          <% } %>
+
+          <button class="view-btn" onclick="verDetalhes('<%= treino.nome %>', '<%= treino.descricao.replace(/\n/g,  ) %>', '<%= treino.objetivo %>', '<%= treino.divisao %>')">Ver</button>
         </div>
       <% }); %>
     <% } else { %>
       <p id="nenhumcadastro" style="text-align: center;">Nenhum treino cadastrado ainda.</p>
     <% } %>
   </section>
+
+  <!-- Modal de confirmação de senha -->
+<div id="modalSenha" class="modal-senha" style="display: none;">
+  <div class="modal-conteudo">
+    <h3>Confirme sua senha</h3>
+    <input type="password" id="senhaConfirmar" placeholder="Digite sua senha">
+    <div class="botoes-modal">
+      <button id="cancelarSenha">Cancelar</button>
+      <button id="confirmarSenha">Confirmar</button>
+    </div>
+    <p id="erroSenha" style="color: red; display: none;">Senha incorreta!</p>
+  </div>
+</div>
+
 
   <script src="/js/treinos.js"></script>
 </body>

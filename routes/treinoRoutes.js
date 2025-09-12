@@ -1,17 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const treinosController = require('../controllers/treinoController');
+const treinoController = require('../controllers/treinoController');
+const { isAuthenticated, isOwnerOrProfessor } = require('../middlewares/authMiddleware');
 
-// Página de treinos (listar todos do usuário)
-router.get('/', treinosController.renderTreinos);
-
-// Adicionar novo treino
-router.post('/add', treinosController.addTreino);
-
-// Excluir treino
-router.post('/delete/:id', treinosController.deleteTreino);
-
-// Editar treino
-router.post('/edit/:id', treinosController.editTreino);
+router.get('/', isAuthenticated, treinoController.renderTreinos);
+router.post('/add', isAuthenticated, treinoController.addTreino);
+router.post('/update/:id', isAuthenticated, isOwnerOrProfessor, treinoController.editTreino);
+router.post('/delete/:id', isAuthenticated, isOwnerOrProfessor, treinoController.deleteTreino);
 
 module.exports = router;
+

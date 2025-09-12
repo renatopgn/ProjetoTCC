@@ -221,3 +221,55 @@ textarea {
   border: none;
   font-size: 1.2rem;
 }
+
+.modal-senha {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-conteudo {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.modal-conteudo input {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.botoes-modal {
+  display: flex;
+  justify-content: space-between;
+}
+
+.botoes-modal button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#confirmarSenha {
+  background: #28a745;
+  color: #fff;
+}
+
+#cancelarSenha {
+  background: #dc3545;
+  color: #fff;
+}

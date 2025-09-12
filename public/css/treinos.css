@@ -157,7 +157,7 @@ body {
 .treino-card h3 {
   color: orange;
   margin: 0 0 5px;
-  font-size: 20px;
+  font-size: 27px;
   text-align: center;
   font-family: 'Poppins', sans-serif;
 }
@@ -195,12 +195,12 @@ body {
 }
 
 
-
 .treino-card p {
   color: #ccc;
   font-size: 0.9rem;
   margin-bottom: 5px;
   line-height: 1.2em;
+  font-size: 18px;
 }
 
 .treino-card form {
@@ -278,4 +278,17 @@ body {
 
 .favorito-btn.animate {
   animation: explode 0.3s ease;
+}
+
+select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ca932d;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+select option {
+  padding: 8px;
 }

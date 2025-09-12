@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const { Op } = require('sequelize');
 
 // Listagem + busca
 exports.getUsuarios = async (req, res) => {
@@ -6,7 +7,10 @@ exports.getUsuarios = async (req, res) => {
   try {
     const usuarios = await User.findAll({
       where: {
-        nome: { [require('sequelize').Op.like]: `%${query}%` }
+        [Op.or]: [
+          { nome: { [Op.like]: `%${query}%` } },
+          { cpf: { [Op.like]: `%${query}%` } }
+        ]
       }
     });
     res.render('usuarios', { usuarios, query });
