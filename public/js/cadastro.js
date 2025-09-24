@@ -28,3 +28,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     cpfInput.value = value;
   });
+
+  const telefoneInput = document.querySelector('#contato');
+
+telefoneInput.addEventListener('input', () => {
+  let value = telefoneInput.value.replace(/\D/g, ''); // só números
+
+  if (value.length > 11) value = value.slice(0, 11); // máximo 11 dígitos
+
+  if (value.length > 2) {
+    value = value.replace(/^(\d{2})(\d)/g, '($1) $2'); // (xx)
+  }
+  if (value.length > 7) {
+    value = value.replace(/(\d{5})(\d{4})$/, '$1-$2'); // xxxxx-xxxx
+  }
+
+  telefoneInput.value = value;
+});

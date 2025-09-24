@@ -130,23 +130,25 @@ exports.updateInfo = async (req, res) => {
 };
 
 // Verifica senha antes de permitir edição
-exports.verifyPassword = async (req, res) => {
+exports.verificarSenha = async (req, res) => {
   const userId = req.session.userId;
   const { senha } = req.body;
 
   try {
     const user = await User.findByPk(userId);
 
-    if (!user) return res.status(404).json({ success: false, message: 'Usuário não encontrado' });
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'Usuário não encontrado' });
+    }
 
     const senhaCorreta = await bcrypt.compare(senha, user.senha);
     if (!senhaCorreta) {
       return res.status(401).json({ success: false, message: 'Senha incorreta' });
     }
 
-    res.json({ success: true, message: 'Senha correta' });
+    return res.json({ success: true, message: 'Senha correta' });
   } catch (err) {
     console.error('Erro ao verificar senha:', err);
-    res.status(500).json({ success: false, message: 'Erro ao verificar senha' });
+    return res.status(500).json({ success: false, message: 'Erro ao verificar senha' });
   }
 };
