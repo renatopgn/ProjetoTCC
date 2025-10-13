@@ -47,8 +47,16 @@
           </select>
         <% } %>
 
+          <% if (user.tipo === 'aluno') { %>
+            <div class="aviso-treino">
+              ⚠️ <strong>Atenção!</strong> Este treino pode ser lesivo se executado incorretamente. 
+              Você é responsável pela sua própria execução. 
+            </div>
+          <% } %>
+
         <div class="modal-buttons">
           <button type="button" onclick="fecharModal()">Cancelar</button>
+
           <button type="submit">Salvar</button>
         </div>
       </form>

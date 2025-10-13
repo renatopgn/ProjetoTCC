@@ -38,7 +38,15 @@
       </select>
 
       <label for="contato">Telefone de Contato:</label>
-      <input type="tel" id="contato" name="contato" placeholder="(XX) XXXXX-XXXX" maxlength="15" pattern="\d{0,15}" required>
+      <input 
+        type="tel"
+        id="contato"
+        name="contato"
+        placeholder="(11) 99999-9999"
+        pattern="\(\d{2}\)\s\d{5}-\d{4}"
+        title="Formato: (11) 99999-9999"
+        required
+      >
 
       <button type="submit">Cadastrar</button>
     </form>

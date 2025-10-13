@@ -102,3 +102,17 @@ exports.editTreino = async (req, res) => {
     res.status(500).send('Erro ao editar treino');
   }
 };
+
+exports.getTreinos = async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.redirect('/auth/login');
+
+  const user = await User.findByPk(userId);
+  const treinos = await Treino.findAll({ where: { userId } });
+
+  res.render('treinos', {
+    user,
+    treinos,
+  });
+};
+
