@@ -75,21 +75,18 @@
           <label>Medicação (se houver)</label>
           <input type="text" name="medicacao" value="<%= user.medicacao || '' %>" placeholder="Digite se faz uso de medicamentos" disabled>
         </div>
+
+         <div class="campo">
+          <label>Comorbidade</label>
+          <input type="text" name="comorbidade" value="<%= user.comorbidade || '' %>" placeholder="Ex: Diabetes..." disabled>
+        </div>
+
         <div class="campo">
           <label>Objetivo</label>
           <input type="text" name="objetivo" value="<%= user.objetivo || '' %>" placeholder="Ex: Emagrecer..." disabled>
         </div>
-        <div class="campo">
-          <label>Exames (foto)</label>
-          <% if (user.exame) { %>
-            <p><a href="<%= user.exame %>" target="_blank">Ver exame atual</a></p>
-          <% } %>
-          <input type="file" name="exameFoto" disabled>
-        </div>
-        <div class="campo">
-          <label>Comorbidade</label>
-          <input type="text" name="comorbidade" value="<%= user.comorbidade || '' %>" placeholder="Ex: Diabetes..." disabled>
-        </div>
+       
+       
         <div class="campo">
           <label>Motivo</label>
           <textarea name="motivo" placeholder="Por que está buscando treinos personalizados?" disabled><%= user.motivo || '' %></textarea>

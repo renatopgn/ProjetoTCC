@@ -11,13 +11,13 @@ body {
     font-family: 'Poppins', sans-serif;
     background: url('/imagens/academiafundo.png') no-repeat center center fixed;
     background-size: cover;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
+    min-height: 100vh; /* trocado de height para min-height */
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-    padding-left: 50px;
+    align-items: flex-start;
+    padding: 60px 0 60px 80px; /* espaço padrão lateral esquerda */
+    overflow-y: auto; /* permite rolagem em telas menores */
+    padding-bottom: 100px; /* 🔹 aumenta espaço visual no rodapé */
 }
 
 .form-container {
@@ -142,6 +142,7 @@ button {
     font-size: 16px;
     transition: background-color 0.3s ease;
     font-weight: 600;
+    margin-bottom: 15px; /* 🔹 novo: dá espaço antes do texto de login */
 }
 
 button:hover {
@@ -154,9 +155,9 @@ button:active {
 
 .login-text {
     text-align: center;
-    font-size: 16px;
+    
     color: #979797;
-    margin-top: 20px;
+    
 }
 
 .login-highlight {
@@ -192,18 +193,37 @@ button:active {
 
 /* === RESPONSIVIDADE === */
 
-/* Tablets */
-@media (max-width: 1024px) {
+/* Notebooks e Tablets */
+@media (min-width: 1024px) and (max-width: 1920px) {
     body {
-        justify-content: center;   /* Centraliza no tablet */
-        padding-left: 20px;
-        padding-right: 20px;
+        
+        align-items: flex-start;
+        padding: 60px 20px;
     }
 
     .form-container {
-        margin-left: 0;
-        margin-top: 40px;
+        margin-top: 42px;
+        max-width: 480px;
+        max-height: 280px;
+
+    }
+
+}
+
+/* Tablets médios e celulares grandes */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 40px 20px;
+        background-attachment: scroll;
+    }
+
+    .form-container {
         max-width: 90%;
+        margin: 0 auto;
+        padding: 25px;
     }
 
     h1 {
@@ -211,41 +231,15 @@ button:active {
     }
 }
 
-/* Celulares grandes */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column; /* Coloca tudo em coluna */
-        justify-content: center;
-        padding: 20px;
-        background-attachment: scroll; /* melhora no celular */
-    }
-
-    .form-container {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 400px;
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 22px;
-    }
-
-    button {
-        font-size: 15px;
-        padding: 12px;
-    }
-}
-
 /* Celulares pequenos */
 @media (max-width: 480px) {
     body {
-        padding: 10px;
+        padding: 20px 10px;
     }
 
     .form-container {
         max-width: 100%;
-        padding: 15px;
+        padding: 20px 15px;
         gap: 15px;
     }
 
@@ -264,5 +258,4 @@ button:active {
 
     .login-text {
         font-size: 14px;
-    }
-}
+    }}

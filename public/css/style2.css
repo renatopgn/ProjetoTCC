@@ -151,3 +151,10 @@ body {
         font-size: 18px;
     }
 }
+
+@media (min-width: 1024px) and (max-width: 1920px) {
+   .quadro {
+    max-width: 460px;
+    max-height: 550px;
+   }
+  }
