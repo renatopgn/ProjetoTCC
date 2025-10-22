@@ -273,3 +273,16 @@ textarea {
   background: #dc3545;
   color: #fff;
 }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #2c2c2c inset !important; /* cinza do fundo */
+  -webkit-text-fill-color: #fff !important; /* cor do texto */
+  caret-color: #fff; /* cor do cursor */
+}
+
+/* Transição suave quando o autofill some */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+}

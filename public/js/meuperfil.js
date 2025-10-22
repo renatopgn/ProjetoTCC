@@ -185,11 +185,39 @@ document.addEventListener("DOMContentLoaded", () => {
     salvarFichaBtn.style.display = "inline-block";
   });
 
-  document.getElementById("form-avaliacao").addEventListener("submit", function() {
-    inputsFicha.forEach(input => input.disabled = true);
-    editarFichaBtn.style.display = "inline-block";
-    salvarFichaBtn.style.display = "none";
-    salvarFichaBtn.textContent = "Salvando...";
-    salvarFichaBtn.disabled = true;
-  });
+  document.getElementById("form-avaliacao").addEventListener("submit", async function (e) {
+  e.preventDefault(); // Impede o reload da página padrão do form
+
+  salvarFichaBtn.textContent = "Salvando...";
+  salvarFichaBtn.disabled = true;
+
+  // Captura todos os dados do formulário
+  const form = e.target;
+  const dados = Object.fromEntries(new FormData(form).entries());
+
+  try {
+    const resp = await fetch("/perfil/update", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(dados)
+});
+
+    if (resp.ok) {
+      alert("Ficha de avaliação atualizada com sucesso!");
+      salvarFichaBtn.textContent = "Salvar";
+      salvarFichaBtn.disabled = false;
+      inputsFicha.forEach(input => input.disabled = true);
+      editarFichaBtn.style.display = "inline-block";
+      salvarFichaBtn.style.display = "none";
+    } else {
+      alert("Os dados não estão no formato correto!");
+      console.error(await resp.text());
+    }
+  } catch (err) {
+    console.error("Erro ao enviar dados:", err);
+    alert("Erro ao salvar ficha!");
+  }
+});
 });

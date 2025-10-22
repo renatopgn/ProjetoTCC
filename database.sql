@@ -16,7 +16,6 @@ CREATE TABLE IF NOT EXISTS usuario (
     peso FLOAT,
     medicacao TEXT,
     objetivo VARCHAR(100),
-    exame VARCHAR(255),-- Aqui é o nome do arquivo da imagem, se for upload
     comorbidade TEXT,
     motivo TEXT,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,

@@ -39,65 +39,38 @@ exports.getPerfil = async (req, res) => {
 };
 
 exports.updatePerfil = async (req, res) => {
-   const userId = req.session.userId;
-  let { altura, peso, medicacao, objetivo, comorbidade, motivo } = req.body;
-  let examePath = null;
-
-  console.log('Dados recebidos no updatePerfil:', req.body);
-
-  // CONVERTER E VALIDAR CAMPOS NUMÉRICOS
-  if (altura && altura.trim() !== '') {
-    altura = parseFloat(altura.replace(',', '.')); // Converte para float
-  } else {
-    altura = null; // Se estiver vazio, define como null
-  }
-
-  if (peso && peso.trim() !== '') {
-    peso = parseFloat(peso.replace(',', '.')); // Converte para float
-  } else {
-    peso = null; // Se estiver vazio, define como null
-  }
-
-  // Garantir que campos de texto não sejam undefined
-  medicacao = medicacao || '';
-  objetivo = objetivo || '';
-  comorbidade = comorbidade || '';
-  motivo = motivo || '';
-
-  console.log('Dados processados:', { altura, peso, medicacao, objetivo, comorbidade, motivo });
-
-  if (req.file) {
-    examePath = '/uploads/' + req.file.filename;
-    console.log('Caminho do exame:', examePath);
-  }
+  const userId = req.session.userId;
+  console.log('==== BODY RECEBIDO ====');
+  console.log(req.body);
+  if (!userId) return res.status(401).json({ success: false, message: 'Usuário não autenticado' });
 
   try {
-    const user = await User.findByPk(userId);
+    let { altura, peso, medicacao, objetivo, comorbidade, motivo } = req.body;
 
-    // Apaga exame anterior se substituir
-    if (examePath && user.exame) {
-      const oldPath = path.join(__dirname, '..', 'public', user.exame);
-      if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
-    }
+    console.log('Dados recebidos no updatePerfil:', req.body);
 
+    // Conversão e validação de campos numéricos
+    altura = altura && altura.trim() !== '' ? parseFloat(altura.replace(',', '.')) : null;
+    peso = peso && peso.trim() !== '' ? parseFloat(peso.replace(',', '.')) : null;
+
+    // Campos de texto
+    medicacao = medicacao || '';
+    objetivo = objetivo || '';
+    comorbidade = comorbidade || '';
+    motivo = motivo || '';
+
+    // Atualização no banco
     await User.update(
-      {
-        altura,
-        peso,
-        medicacao,
-        objetivo,
-        comorbidade,
-        motivo,
-        exame: examePath || user.exame,
-      },
+      { altura, peso, medicacao, objetivo, comorbidade, motivo },
       { where: { id: userId } }
     );
 
-    console.log('Dados atualizados com sucesso para usuário:', userId);
-    res.redirect('/perfil');
+    console.log('Ficha de avaliação atualizada com sucesso para usuário:', userId);
+
+    return res.json({ success: true, message: 'Ficha de avaliação atualizada com sucesso!' });
   } catch (err) {
-    console.error('Erro detalhado ao atualizar perfil:', err);
-    res.status(500).send('Erro ao atualizar perfil: ' + err.message);
+    console.error('Erro ao atualizar perfil:', err);
+    return res.status(500).json({ success: false, message: 'Erro ao atualizar perfil.' });
   }
 };
 

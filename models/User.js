@@ -45,10 +45,6 @@ const User = db.define('User', {
     type: DataTypes.STRING,
     
   },
-  exame: {
-    type: DataTypes.STRING,
-    // nome do arquivo
-  },
   comorbidade: {
     type: DataTypes.TEXT,
    
