@@ -35,5 +35,10 @@
   </div>
 
   <script src="/js/login.js"></script>
+  <% if (error) { %>
+    <script>
+      alert("<%= error %>");
+    </script>
+  <% } %>
 </body>
 </html>

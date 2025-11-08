@@ -2,7 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 exports.getLogin = (req, res) => {
-  res.render('login');
+  res.render('login', { error: null });
 };
 
 exports.getCadastro = (req, res) => {
@@ -34,10 +34,14 @@ exports.postLogin = async (req, res) => {
 
   try {
     const user = await User.findOne({ where: { cpf } });
-    if (!user) return res.redirect('/auth/login');
+    if (!user) {
+      return res.render('login', { error: 'Conta não encontrada. Verifique o CPF e tente novamente.' });
+    }
 
     const match = await bcrypt.compare(senha, user.senha);
-    if (!match) return res.redirect('/auth/login');
+    if (!match) {
+      return res.render('login', { error: 'Senha incorreta. Tente novamente.' });
+    }
 
     req.session.userId = user.id;
     res.redirect('/');
