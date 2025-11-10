@@ -49,7 +49,7 @@ app.use('/auth', authRoutes);
 app.use('/perfil', perfilRoutes);
 app.use('/planos', planoRoutes);
 app.use('/treinos', treinoRoutes);
-app.use('/usuarios', usuariosRoutes); 
+app.use('/usuarios11021972', usuariosRoutes); 
 
 // Inicia o banco e servidor
 db.sync().then(() => {
