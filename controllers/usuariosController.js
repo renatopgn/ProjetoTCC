@@ -30,7 +30,7 @@ exports.alterarTipo = async (req, res) => {
     usuario.tipo = req.body.tipo ? "professor" : "aluno";
     await usuario.save();
 
-    res.redirect('/usuarios');
+    res.redirect('/usuarios11021972');
   } catch (err) {
     console.error(err);
     res.status(500).send("Erro ao alterar tipo de usuário");
@@ -42,7 +42,7 @@ exports.deleteUsuario = async (req, res) => {
   const { id } = req.params;
   try {
     await User.destroy({ where: { id } });
-    res.redirect('/usuarios');
+    res.redirect('/usuarios11021972');
   } catch (err) {
     console.error(err);
     res.status(500).send("Erro ao excluir usuário");

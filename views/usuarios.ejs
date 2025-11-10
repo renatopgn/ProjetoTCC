@@ -33,7 +33,7 @@
                 <td><%= usuario.nome %></td>
                 <td><%= usuario.cpf %></td>
                 <td>
-                  <form method="post" action="/usuarios/tipo/<%= usuario.id %>" style="display:inline;">
+                  <form method="post" action="/usuarios11021972/tipo/<%= usuario.id %>" style="display:inline;">
                     <label class="switch">
                       <input type="checkbox" name="tipo" value="professor" onchange="this.form.submit()" <%= usuario.tipo === 'professor' ? 'checked' : '' %>>
                       <span class="slider"></span>
@@ -41,7 +41,7 @@
                   </form>
                 </td>
                 <td>
-                  <form method="post" action="/usuarios/delete/<%= usuario.id %>" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                  <form method="post" action="/usuarios11021972/delete/<%= usuario.id %>" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
                     <button type="submit" class="btn btn-delete">Excluir</button>
                   </form>
                 </td>

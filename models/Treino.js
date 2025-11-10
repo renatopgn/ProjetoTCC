@@ -20,6 +20,8 @@ const Treino = db.define('Treino', {
     type: DataTypes.INTEGER,
     allowNull: false
   }
+  
+  
 }, {
   timestamps: true
 });

@@ -5,7 +5,7 @@ const { isAuthenticated, isOwnerOrProfessor } = require('../middlewares/authMidd
 
 router.get('/', isAuthenticated, treinoController.renderTreinos);
 router.post('/add', isAuthenticated, treinoController.addTreino);
-router.post('/update/:id', isAuthenticated, isOwnerOrProfessor, treinoController.editTreino);
+router.post('/edit/:id', isAuthenticated, isOwnerOrProfessor, treinoController.editTreino);
 router.post('/delete/:id', isAuthenticated, isOwnerOrProfessor, treinoController.deleteTreino);
 
 module.exports = router;
